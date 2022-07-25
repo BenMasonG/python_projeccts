@@ -12,13 +12,8 @@ def computer_play():
     A function that randomly generates the computers turn. It will return either
     rock, paper or scissors.
     '''
-    computersTurn = random.randint(1,3)
-    if computersTurn == 1:
-        return 'rock'
-    if computersTurn ==2:
-        return 'paper'
-    if computersTurn == 3:
-        return 'scissors'
+    picks = ['rock', 'paper', 'scissors']
+    return random.choice(picks)
 
 def players_turn():
     '''
