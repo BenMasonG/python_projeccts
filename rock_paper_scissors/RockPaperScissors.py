@@ -5,6 +5,8 @@ A game of Rock, Paper, Scissors
 import random
 from time import sleep
 
+score_count = []
+
 def computer_play():
     '''
     A function that randomly generates the computers turn. It will return either
@@ -17,8 +19,6 @@ def computer_play():
         return 'paper'
     if computersTurn == 3:
         return 'scissors'
-
-computer_play()
 
 def players_turn():
     '''
@@ -33,8 +33,6 @@ def players_turn():
             return players_choice
         else:
             print('Please choose rock, paper or scissors.')
-
-players_turn()
 
 def play_round(player_selection, computuer_selection):
     '''
@@ -70,13 +68,26 @@ def play_round(player_selection, computuer_selection):
         raise Exception('An invalid argument has been passed. Please read the\
             docstring and try again.')
 
-play_round(players_turn(), computer_play())
-
 def play_five_rounds():
     round = 0
+    score_count.clear()
+    score = 0
     while round < 5:
-        print(play_round(players_turn(), computer_play()))
+        score_count.append(play_round(players_turn(), computer_play()))
+        print(score_count[round])
         round += 1
-        sleep(0.5)
+        sleep(0.5) #Ensures round result printed before next input request.
+        
+    for result in score_count:
+        if 'win' in result:
+            score += 1
+        elif 'lose' in result:
+            score -=1
+    
+    if score > 0:
+        return 'Well done, you win!'
+    if score < 0:
+        return 'Unlucky, you lose.'
+    return 'It\'s a draw!'
 
 play_five_rounds()
