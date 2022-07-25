@@ -69,6 +69,12 @@ def play_round(player_selection, computuer_selection):
             docstring and try again.')
 
 def play_five_rounds():
+    '''
+    A function that plays 5 rounds of rock, paper, scissors. The user will be
+    asked to input their choice at the start of each round. The round result
+    will be printed to the console after each round. After 5 roudns the outcome
+    will be returned to the user.
+    '''
     round = 0
     score_count.clear()
     score = 0
